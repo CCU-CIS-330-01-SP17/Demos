@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animals
+namespace Delegates
 {
-    public class Ostrich : Bird
+    class Hypothesis
     {
-        public void Sprint()
-        { }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90DFF2D2-035E-4D2A-B1F0-9B107AB58D20}</ProjectGuid>
+    <ProjectGuid>{67D880B7-D68B-4AFE-9D41-022A7F8FD1C1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InterfaceDemos</RootNamespace>
-    <AssemblyName>InterfaceDemos</AssemblyName>
+    <RootNamespace>CollectionDemos</RootNamespace>
+    <AssemblyName>CollectionDemos</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,12 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Animals\Animals.csproj">
-      <Project>{F844363E-42B4-4915-A7CD-D886BB082992}</Project>
-      <Name>Animals</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
