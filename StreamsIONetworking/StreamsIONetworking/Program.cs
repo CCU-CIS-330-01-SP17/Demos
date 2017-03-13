@@ -11,7 +11,7 @@ namespace StreamsIONetworking
     {
         static void Main(string[] args)
         {
-            //MemoryStreamDemo();
+            MemoryStreamDemo();
             //FileStreamDemo();
             //StreamReaderWriterDemo();
             //StreamCompressionDemo();
@@ -19,7 +19,7 @@ namespace StreamsIONetworking
             //UriDemo();
             //WebClientDemo();
 
-            HttpListenerDemo();
+            //HttpListenerDemo();
         }
 
         private static void MemoryStreamDemo()
@@ -153,11 +153,41 @@ namespace StreamsIONetworking
         private static void HttpListenerDemo()
         {
             int portNumber = 8001;
+            UriBuilder uri = new UriBuilder("http", "localhost", portNumber);
 
-            ListenAsync(portNumber);
+            // Create a listener.
+            using (HttpListener listener = new HttpListener())
+            {
+                listener.Prefixes.Add(uri.ToString());
+                listener.Start();
 
-            Console.WriteLine($"Server running on port {portNumber}. Press Enter to stop.");
-            Console.ReadLine();
+                Console.WriteLine("Listening...");
+
+                // Note: The GetContext method blocks while waiting for a request. 
+                HttpListenerContext context = listener.GetContext();
+                HttpListenerRequest request = context.Request;
+                
+                // Obtain a response object.
+                HttpListenerResponse response = context.Response;
+                
+                // Construct a response.
+                string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+                
+                // Get a response stream and write the response to it.
+                response.ContentLength64 = buffer.Length;
+                Stream output = response.OutputStream;
+                output.Write(buffer, 0, buffer.Length);
+                
+                // You must close the output stream.
+                output.Close();
+                listener.Stop();
+            }
+
+            //ListenAsync(portNumber);
+
+            //Console.WriteLine($"Server running on port {portNumber}. Press Enter to stop.");
+            //Console.ReadLine();
         }
 
         async static void ListenAsync(int portNumber)
