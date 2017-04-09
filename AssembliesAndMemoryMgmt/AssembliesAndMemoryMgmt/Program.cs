@@ -17,7 +17,7 @@ namespace AssembliesAndMemoryMgmt
 
             //WriteAssemblyInfo();
 
-            ManageContacts();
+            //ManageContacts();
         }
 
         private  static void WriteAssemblyInfo()
